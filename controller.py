@@ -53,9 +53,6 @@ def move_snake(snake, key, food, obstacles, win, screen_height, screen_width, sn
     # Draw the new snake head
     win.addstr(snake[0][0], snake[0][1], "I",  curses.color_pair(snake_color))
 
-    # Show current points
-    win.addstr(screen_height - 1, 0, str(len(snake) - 3))
-
     return [snake, key, food]
 
 
