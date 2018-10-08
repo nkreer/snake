@@ -8,9 +8,9 @@ def init_highscore():
     highscore_file.close()
 
 
-def endgame(points):
+def endgame(points, name):
     curses.endwin()
-    print("The game has ended! - " + str(points) + " points!")
+    print("The game has ended and " + str(name) + " has lost! - " + str(points) + " points!")
     # Did the user beat the highscore?
     highscore = get_highscore()
     if points > highscore:

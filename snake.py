@@ -70,21 +70,21 @@ while True:
         key = next_key
 
     # Move and update our data
-    obstacles = ai_snake + player_snake + [ai_food]
+    obstacles = player_snake + ai_snake + [ai_food]
     # AI player (uncomment to activate)
-    # key = controller.pathfinding(key, [player_snake[0][0], player_snake[0][1]], player_food, obstacles, screen_height, screen_width)
-    result = controller.move_snake(player_snake, key, player_food, obstacles, win, screen_height, screen_width, 1, 2)
+    # key = controller.pathfinding(key, [player_snake[0][0], player_snake[0][1]], player_snake, player_food, obstacles, screen_height, screen_width, True)
+    result = controller.move_snake(player_snake, key, player_food, obstacles, win, screen_height, screen_width, 1, 2, "Player")
     player_snake = result[0]
     key = result[1]
     player_food = result[2]
 
     # Control the AI
     # Do not hit any snake
-    obstacles = ai_snake + player_snake + [player_food]
+    obstacles = player_snake + ai_snake + [player_food]
     # Find out where to move next
-    ai_key = controller.pathfinding(ai_key, [ai_snake[0][0], ai_snake[0][1]], ai_food, obstacles, screen_height, screen_width)
+    ai_key = controller.pathfinding(ai_key, [ai_snake[0][0], ai_snake[0][1]], ai_snake, ai_food, obstacles, screen_height, screen_width, True)
     # Do the action
-    ai_result = controller.move_snake(ai_snake, ai_key, ai_food, obstacles, win, screen_height, screen_width, 3, 4)
+    ai_result = controller.move_snake(ai_snake, ai_key, ai_food, obstacles, win, screen_height, screen_width, 3, 4, "AI")
     ai_snake = ai_result[0]
     ai_key = ai_result[1]
     ai_food = ai_result[2]
